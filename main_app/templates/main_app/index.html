@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svatba - Vyber si svůj tým</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main_app/style.css' %}">
+</head>
+<body>
+    <div class="game-container">
+        
+        <h1 class="main-title">Vyber si svůj tým</h1>
+
+        <div class="battle-arena">
+            
+            <div class="character-card">
+                <h2 class="team-title">Tým Ženich</h2>
+                <a href="{% url 'on' %}" class="portrait-btn groom-btn" style="display: inline-block;">
+                    <img src="{% static 'main_app/img/on.jpg' %}" alt="Ženich" class="portrait-img">
+                </a>
+
+                <div class="xp-container">
+                    <div class="xp-header">
+                        <span class="level-badge">LVL {{ on_lvl }} </span>
+                        <span class="xp-text">{{ on_xp }} / {{ on_xp_need }} XP</span>
+                    </div>
+                    <div class="xp-bar-outer">
+                        <div class="xp-bar-inner groom-xp" style="width: {% widthratio on_xp on_xp_need 100 %}%"></div>
+                    </div>
+                </div>
+
+                <table class="stats-table">
+                    <tr><th>Síla</th><td>85</td></tr>
+                    <tr><th>Obratnost</th><td>70</td></tr>
+                    <tr><th>Inteligence</th><td>80</td></tr>
+                    <tr><th>Vitalita</th><td>90</td></tr>
+                    <tr><th>Krása</th><td>75</td></tr>
+                    <tr><th>Láska</th><td>999</td></tr>
+                </table>
+            </div>
+
+            <div class="vs-badge">VS.</div>
+
+            <div class="character-card">
+                <h2 class="team-title">Tým Nevěsta</h2>
+                <a href="{% url 'ona' %}" class="portrait-btn bride-btn" style="display: inline-block;">
+                    <img src="{% static 'main_app/img/ona.jpg' %}" alt="Nevěsta" class="portrait-img">
+                </a>
+
+                <div class="xp-container">
+                    <div class="xp-header">
+                        <span class="level-badge">LVL {{ ona_lvl }}</span>
+                        <span class="xp-text">{{ ona_xp }} / {{ ona_xp_need }} XP</span>
+                    </div>
+                    <div class="xp-bar-outer">
+                        <div class="xp-bar-inner bride-xp" style="width: {% widthratio ona_xp ona_xp_need 100 %}%"></div>
+                    </div>
+                </div>
+
+                <table class="stats-table">
+                    <tr><th>Síla</th><td>60</td></tr>
+                    <tr><th>Obratnost</th><td>95</td></tr>
+                    <tr><th>Inteligence</th><td>95</td></tr>
+                    <tr><th>Vitalita</th><td>85</td></tr>
+                    <tr><th>Krása</th><td>100</td></tr>
+                    <tr><th>Láska</th><td>999</td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

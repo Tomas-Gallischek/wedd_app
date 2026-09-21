@@ -1,0 +1,1037 @@
+/* ==========================================================================
+   SVATBA MARKÉTA & TOMÁŠ — STRÁNKA NEVĚSTY
+   Koncept: Kopretinová louka (Fresh Green & Daisy Edition)
+   Zelená paleta, výrazné ohraničení, responzivní široký desktop + dedikovaný mobil
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+    /* Zelená paleta (Fresh Meadow & Sage Greens) */
+    --green-primary: #5C8354;
+    --green-primary-hover: #486A41;
+    --green-dark: #273823;
+    --green-accent: #78A56E;
+
+    --green-light: #EAF3E8;
+    --green-light-soft: #F3F8F2;
+    --green-pill: #E2EFE0;
+
+    /* Výrazné rámečky (řešení pro jasnou čitelnost hran na světlém podkladu) */
+    --border-strong: #7EAA74;
+    --border-medium: #9EC095;
+    --border-subtle: #BDD8B6;
+
+    /* Kopretinové akcenty */
+    --daisy-white: #FFFFFF;
+    --daisy-yellow: #E5A834;
+    --champagne-soft: #F9F5EC;
+
+    /* Text */
+    --text-main: #202B1D;
+    --text-muted: #4D5E4A;
+    --text-light: #768673;
+
+    /* Podklad a karty */
+    --bg-page: #F6FAF4;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-shadow: 0 8px 24px -2px rgba(39, 56, 35, 0.1), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 14px 34px -4px rgba(39, 56, 35, 0.16), 0 4px 10px -1px rgba(0, 0, 0, 0.06);
+
+    /* Písma */
+    --font-script: 'Great Vibes', cursive;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sub-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Prvky */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+    --transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   KOPRETINOVÝ RÁM (ONA_BG.PNG)
+   ========================================================================== */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(280px, 20vw);
+    height: 100vh;
+    background-image: url('img/ona_bg.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(280px, 20vw);
+    height: 100vh;
+    background-image: url('img/ona_bg.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    transform: scaleX(-1);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================================================
+   HERO ZÁHLAVÍ (ŠIROKÉ DESKTOP ROZVRŽENÍ)
+   ========================================================================== */
+.hero-wrapper {
+    position: relative;
+    z-index: 1;
+    padding: 40px 24px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-stationery {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2.5px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--card-shadow);
+    padding: 36px 36px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: heroEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Zelená horní ozdobná linka */
+.hero-stationery::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--green-accent) 25%,
+            var(--green-primary) 50%,
+            var(--green-accent) 75%,
+            transparent 100%);
+}
+
+.daisy-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-light);
+    border: 1.5px solid var(--border-medium);
+    padding: 6px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+}
+
+.daisy-badge svg {
+    width: 15px;
+    height: 15px;
+    animation: daisySpin 20s linear infinite;
+}
+
+/* Motto ze svatební pozvánky */
+.hero-motto {
+    font-family: var(--font-sub-serif);
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--green-primary);
+    line-height: 1.3;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.hero-names {
+    font-family: var(--font-serif);
+    font-size: 3.4rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--green-dark);
+    line-height: 1.15;
+    margin: 4px 0 8px;
+}
+
+.hero-names .amp {
+    font-family: var(--font-sub-serif);
+    font-style: italic;
+    color: var(--green-accent);
+    font-weight: 400;
+    margin: 0 6px;
+}
+
+.hero-location-tag {
+    font-family: var(--font-sub-serif);
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.hero-date-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 12px 0 16px;
+}
+
+.hero-date-line {
+    width: 44px;
+    height: 2px;
+    background: var(--border-medium);
+}
+
+.hero-date-text {
+    font-family: var(--font-sub-serif);
+    font-size: 1.45rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    font-weight: 700;
+}
+
+.hero-time-badge {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-dark);
+    border: 1.5px solid var(--border-medium);
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   ŽIVÉ ODPOČÍTÁVADLO
+   ========================================================================== */
+.countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.cd-box {
+    background: #FFFFFF;
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    min-width: 72px;
+    box-shadow: 0 3px 10px rgba(39, 56, 35, 0.05);
+    transition: var(--transition);
+}
+
+.cd-box:hover {
+    border-color: var(--green-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(92, 131, 84, 0.2);
+}
+
+.cd-number {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.cd-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    display: block;
+}
+
+/* ==========================================================================
+   AKČNÍ TLAČÍTKA V HLAVIČCE
+   ========================================================================== */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-action-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-primary-hover) 100%);
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--green-dark);
+    box-shadow: 0 4px 14px rgba(72, 106, 65, 0.35);
+    transition: var(--transition);
+}
+
+.btn-action-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(72, 106, 65, 0.45);
+    background: linear-gradient(135deg, var(--green-accent) 0%, var(--green-primary) 100%);
+}
+
+.btn-action-primary svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.btn-action-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #FFFFFF;
+    color: var(--green-dark);
+    border: 2px solid var(--border-strong);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    transition: var(--transition);
+}
+
+.btn-action-secondary:hover {
+    background: var(--green-light);
+    border-color: var(--green-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(92, 131, 84, 0.2);
+}
+
+.btn-action-secondary svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   HLAVNÍ KONTEJNER (ŠIROKÝ DESKTOP: 900 PX)
+   ========================================================================== */
+.main-content {
+    max-width: 900px;
+    margin: 24px auto 50px;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Karty s výrazným 2px rámečkem */
+.botanical-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2.5px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.botanical-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--green-primary);
+    transform: translateY(-2px);
+}
+
+.card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px dashed var(--border-subtle);
+}
+
+.card-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--green-light);
+    border: 2px solid var(--border-medium);
+    color: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.card-title-text h2 {
+    font-family: var(--font-serif);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1.2;
+}
+
+.card-title-text p {
+    font-size: 0.85rem;
+    color: var(--green-primary);
+    font-weight: 600;
+    font-family: var(--font-sub-serif);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   SEKCE 1: KDY A KDE (VELKORYSÝ GRID)
+   ========================================================================== */
+.venue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.venue-col {
+    background: #FFFFFF;
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.venue-col:hover {
+    border-color: var(--green-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(39, 56, 35, 0.08);
+}
+
+.venue-tag {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-medium);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.venue-col h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+}
+
+.venue-highlight {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--green-primary);
+    margin-bottom: 8px;
+}
+
+.venue-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 16px;
+}
+
+.venue-time-pill {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    border: 1.5px solid var(--border-strong);
+    font-size: 0.84rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    align-self: flex-start;
+}
+
+.venue-time-pill svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   SEKCE 2: HARMONOGRAM DNE (PROSTORNÝ TIMELINE)
+   ========================================================================== */
+.timeline-list {
+    position: relative;
+    padding-left: 64px;
+    margin-top: 6px;
+}
+
+.timeline-list::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 14px;
+    left: 24px;
+    width: 3px;
+    background: linear-gradient(180deg,
+            var(--green-accent) 0%,
+            var(--green-primary) 50%,
+            var(--green-dark) 100%);
+    border-radius: 3px;
+}
+
+.timeline-row {
+    position: relative;
+    margin-bottom: 18px;
+    transition: var(--transition);
+}
+
+.timeline-row:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-flower-point {
+    position: absolute;
+    left: -54px;
+    top: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2.5px solid var(--green-primary);
+    color: var(--green-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(39, 56, 35, 0.12);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.timeline-flower-point svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.timeline-row:hover .timeline-flower-point {
+    background: var(--green-primary);
+    color: #FFFFFF;
+    transform: scale(1.15);
+    box-shadow: 0 0 12px rgba(92, 131, 84, 0.45);
+}
+
+.timeline-body {
+    background: #FFFFFF;
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    transition: var(--transition);
+}
+
+.timeline-row:hover .timeline-body {
+    border-color: var(--green-primary);
+    transform: translateX(4px);
+    box-shadow: 0 6px 18px rgba(39, 56, 35, 0.08);
+}
+
+.timeline-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.time-chip {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    background: var(--green-light);
+    border: 1px solid var(--border-subtle);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.timeline-row-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.timeline-row-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+/* ==========================================================================
+   SEKCE 3: DRESSCODE & VZORNÍK
+   ========================================================================== */
+.dresscode-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.dresscode-text-block p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.style-badge {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--border-medium);
+    margin-bottom: 10px;
+}
+
+.palette-card-inner {
+    background: #FFFFFF;
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    text-align: center;
+}
+
+.palette-heading {
+    font-family: var(--font-sub-serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--green-dark);
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.palette-items {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.color-swatch-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.color-swatch-unit:hover {
+    transform: translateY(-3px);
+}
+
+.swatch-disc {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2.5px solid #FFFFFF;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12), 0 0 0 1.5px var(--border-medium);
+    transition: var(--transition);
+}
+
+.color-swatch-unit:hover .swatch-disc {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), 0 0 0 2px var(--green-primary);
+}
+
+.disc-sage {
+    background: linear-gradient(135deg, #A2C49D 0%, #76A16D 50%, #517C48 100%);
+}
+
+.disc-champagne {
+    background: linear-gradient(135deg, #FFFDF8 0%, #F5ECD7 50%, #E0CFB0 100%);
+}
+
+.disc-lightgreen {
+    background: linear-gradient(135deg, #F3F8F2 0%, #D4E8CF 50%, #B2D5AB 100%);
+}
+
+.swatch-name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.swatch-hex {
+    font-size: 0.68rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   SEKCE 4: SVATEBNÍ DARY
+   ========================================================================== */
+.gifts-flex {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.gift-illustration {
+    width: 64px;
+    height: 64px;
+    background: var(--green-light);
+    border: 2px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-primary);
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(92, 131, 84, 0.18);
+}
+
+.gift-illustration svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+.gift-note h3 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+}
+
+.gift-note p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   SEKCE 5: FAQ & TIPY
+   ========================================================================== */
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.faq-card {
+    background: #FFFFFF;
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    transition: var(--transition);
+}
+
+.faq-card:hover {
+    border-color: var(--green-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(39, 56, 35, 0.08);
+}
+
+.faq-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+}
+
+.faq-card-title svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--green-primary);
+    flex-shrink: 0;
+}
+
+.faq-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   PATIČKA A NÁVRAT DO ARÉNY
+   ========================================================================== */
+.footer-navigation {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 10px 0 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-back-rpg {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFFFF;
+    color: var(--green-dark);
+    border: 2.5px solid var(--border-strong);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 800;
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 16px rgba(39, 56, 35, 0.1);
+    transition: var(--transition);
+}
+
+.btn-back-rpg:hover {
+    background: var(--green-primary);
+    color: #FFFFFF;
+    border-color: var(--green-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(72, 106, 65, 0.3);
+}
+
+.btn-back-rpg svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    transition: transform 0.25s ease;
+}
+
+.btn-back-rpg:hover svg {
+    transform: translateX(-4px);
+}
+
+.groom-switch-box {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.groom-switch-link {
+    color: var(--green-primary);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1.5px dashed var(--green-primary);
+    padding-bottom: 2px;
+    transition: var(--transition);
+}
+
+.groom-switch-link:hover {
+    color: var(--green-dark);
+    border-bottom-style: solid;
+}
+
+/* ==========================================================================
+   ANIMACE
+   ========================================================================== */
+@keyframes heroEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes daisySpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================================================
+   DEDIKOVANÉ MOBILNÍ STYLY (< 768px)
+   ========================================================================== */
+@media (max-width: 900px) {
+
+    /* Na středních zařízeních skryjeme pravý lem */
+    body::after {
+        display: none;
+    }
+
+    body::before {
+        width: 200px;
+        opacity: 0.55;
+    }
+
+    .hero-wrapper,
+    .main-content {
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    body::before {
+        width: 140px;
+        opacity: 0.25;
+        /* Jemně v pozadí pro maximální čitelnost textu na mobilu */
+    }
+
+    .hero-wrapper {
+        padding: 24px 14px 14px;
+    }
+
+    .hero-stationery {
+        padding: 24px 16px 20px;
+        border-width: 2px;
+    }
+
+    .hero-motto {
+        font-size: 1.15rem;
+    }
+
+    .hero-names {
+        font-size: 2.2rem;
+    }
+
+    .hero-date-text {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-date-line {
+        width: 24px;
+    }
+
+    .countdown-grid {
+        gap: 8px;
+    }
+
+    .cd-box {
+        min-width: 52px;
+        padding: 6px 10px;
+    }
+
+    .cd-number {
+        font-size: 1.3rem;
+    }
+
+    .main-content {
+        padding: 0 14px;
+        gap: 16px;
+    }
+
+    .botanical-card {
+        padding: 20px 18px;
+        border-width: 2px;
+    }
+
+    .card-title-text h2 {
+        font-size: 1.3rem;
+    }
+
+    /* Všechny vícesloupcové mřížky na mobilu do jednoho sloupce */
+    .venue-grid,
+    .dresscode-layout,
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .timeline-list {
+        padding-left: 46px;
+    }
+
+    .timeline-list::before {
+        left: 15px;
+    }
+
+    .timeline-flower-point {
+        left: -40px;
+        width: 22px;
+        height: 22px;
+    }
+
+    .gifts-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+    }
+
+    .venue-time-pill {
+        align-self: stretch;
+        justify-content: center;
+    }
+
+    .btn-action-primary,
+    .btn-action-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}

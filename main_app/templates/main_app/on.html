@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svatba - Stránka Ženicha</title>
+    <link rel="stylesheet" href="{% static 'main_app/groom_style.css' %}">
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <p class="hero-subtitle">-- CHALLENGE ACCEPTED --</p>
+            <h1 class="hero-title">TOMÁŠ (Shrek)</h1>
+            <h1 class="hero-title">SE ŽENÍ!</h1>
+            <p class="hero-date">Květen 2027. ASI.</p>
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <section class="info-card">
+            <h2>LOKACE A ČAS</h2>
+            <div class="info-block">
+                <p>Někde na jihu. Bude tam jídlo a pití. Kde přesně máte stát, v kolik tam máte být a jak se to tam jmenuje, to ví hlavní velitelství.</p>
+                
+            </div>
+        </section>
+
+        <section class="info-card">
+            <h2>OPERAČNÍ PLÁN (HARMONOGRAM)</h2>
+            <div class="info-block">
+                <p>Můj plán: Přijít. Říct ano. Najíst se. Dát si pivo. O přesný rozpis minut a logistiku přesunů se stará manažerka projektu.</p>
+            </div>
+        </section>
+
+        <section class="info-card">
+            <h2>OUTFIT (DRESSCODE)</h2>
+            <div class="info-block">
+                <p>Prý mám zakázané tepláky. Vy byste asi neměli přijít nazí. Netuším co znamená "smart casual" ani jaký je rozdíl mezi lososovou a meruňkovou. Zeptejte se někoho, <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">KDO TO VÍ ↗</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="info-card">
+            <h2>MOŽNOSTI SPONZORSTVÍ (DARY)</h2>
+            <div class="info-block">
+                <p>Do výbavy nic nepotřebujeme, mixér, horkovzdušku i rýžovar už máme. Bereme ideálně hotovost, popřípadě můžeme vystavit fakturu na vyžádání do pěti pracovních dní.</p>
+            </div>
+        </section>
+
+
+        <div class="back-zone">
+            <a href="{% url 'ona' %}" class="btn-delegate">VÍCE INFORMACÍ ZDE</a>
+        </div>
+        <div class="back-zone">
+            <a href="{% url 'index' %}" class="btn-back">ZPĚT</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
