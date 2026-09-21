@@ -6,6 +6,4 @@ services:
     container_name: wedd_app_web
     ports:
       - "8010:8000"
-    volumes:
-      - .:/app
     restart: unless-stopped
