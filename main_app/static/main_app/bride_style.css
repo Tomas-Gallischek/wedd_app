@@ -635,17 +635,20 @@ body::after {
    SEKCE 3: DRESSCODE & VZORNÍK
    ========================================================================== */
 .dresscode-layout {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 24px;
-    align-items: center;
+    width: 100%;
+    display: block;
+}
+
+.dresscode-text-block {
+    width: 100%;
 }
 
 .dresscode-text-block p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.65;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .style-badge {
@@ -820,6 +823,52 @@ body::after {
     font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.5;
+}
+
+.faq-btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.btn-outline-green {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green-light-soft);
+    color: var(--green-primary-hover);
+    border: 2px solid var(--green-primary);
+    text-decoration: none !important;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    padding: 9px 20px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 2px 8px rgba(92, 131, 84, 0.12);
+    transition: var(--transition);
+    cursor: pointer;
+    font-family: var(--font-sans);
+}
+
+.btn-outline-green:hover {
+    background: var(--green-primary);
+    color: #FFFFFF !important;
+    border-color: var(--green-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(72, 106, 65, 0.32);
+}
+
+.btn-outline-green svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--green-primary);
+    transition: fill 0.2s ease;
+}
+
+.btn-outline-green:hover svg {
+    fill: #FFFFFF;
 }
 
 /* ==========================================================================
