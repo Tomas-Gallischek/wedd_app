@@ -23,9 +23,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vp^vc7c(@6pkv@z#c0p2u7eaci=-dz&=00+wj9miz(r_t89o13'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'taborovasvatba.cz', 
+    'www.taborovasvatba.cz', 
+    '192.168.0.95', 
+    '127.0.0.1', 
+    'localhost'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://taborovasvatba.cz',
+    'https://www.taborovasvatba.cz'
+]
 
 
 # Application definition
