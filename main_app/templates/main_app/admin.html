@@ -1,0 +1,1153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 403: HACKER DETECTED - SVATEBNÍ GULÁŠ V2.4 🚨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Comic+Neue:ital,wght@0,400;0,700;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #00ff66;
+            --neon-pink: #ff007f;
+            --neon-yellow: #ffee00;
+            --neon-cyan: #00f0ff;
+            --neon-red: #ff2200;
+            --bg-dark: #0a0518;
+            --win95-gray: #c0c0c0;
+            --win95-blue: #000080;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Share Tech Mono', 'Courier New', monospace;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 128, 0.15) 0%, transparent 60%),
+                linear-gradient(rgba(0, 255, 102, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 102, 0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+        }
+
+        /* CRT SCANLINES & FLICKER */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.35) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 9999;
+            opacity: 0.7;
+        }
+
+        /* CRAZY MARQUEE */
+        .retro-ticker {
+            background: repeating-linear-gradient(
+                -45deg,
+                #ffcc00,
+                #ffcc00 20px,
+                #000 20px,
+                #000 40px
+            );
+            color: #000;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 4px solid red;
+            box-shadow: 0 0 20px #ff0055;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .retro-ticker-inner {
+            background: rgba(0, 0, 0, 0.85);
+            color: #ff3333;
+            padding: 8px;
+            display: inline-block;
+            width: 100%;
+            animation: textFlicker 1.5s infinite alternate;
+            letter-spacing: 2px;
+        }
+
+        @keyframes textFlicker {
+            0% { color: #ff0055; text-shadow: 0 0 10px #ff0055; }
+            50% { color: #ffff00; text-shadow: 0 0 15px #ffff00; }
+            100% { color: #00ffff; text-shadow: 0 0 12px #00ffff; }
+        }
+
+        /* FALLING EMOJIS CANVAS */
+        #emoji-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 950px;
+            margin: 25px auto;
+            padding: 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        /* EMERGENCY HERO BANNER */
+        .hero-banner {
+            border: 5px dashed var(--neon-pink);
+            background: rgba(10, 5, 25, 0.9);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 0 35px var(--neon-pink), inset 0 0 20px rgba(255, 0, 128, 0.4);
+            margin-bottom: 30px;
+            position: relative;
+            animation: borderPulse 2s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: var(--neon-pink); box-shadow: 0 0 25px var(--neon-pink); }
+            33% { border-color: var(--neon-green); box-shadow: 0 0 35px var(--neon-green); }
+            66% { border-color: var(--neon-cyan); box-shadow: 0 0 30px var(--neon-cyan); }
+            100% { border-color: var(--neon-yellow); box-shadow: 0 0 40px var(--neon-yellow); }
+        }
+
+        .siren-badge {
+            display: inline-block;
+            background: red;
+            color: white;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 13px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            animation: blinkFast 0.5s infinite alternate;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px red;
+        }
+
+        @keyframes blinkFast {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0.3; transform: scale(1.06); }
+        }
+
+        .hero-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(22px, 4vw, 36px);
+            line-height: 1.4;
+            color: var(--neon-yellow);
+            text-shadow: 3px 3px 0px #ff0055, -2px -2px 0px #00ffff;
+            margin-bottom: 20px;
+            animation: rainbowText 4s infinite linear;
+        }
+
+        @keyframes rainbowText {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .comic-troll {
+            font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(90deg, #ff007f, #7928ca);
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 20px;
+            transform: rotate(-2deg);
+            box-shadow: 4px 4px 0px #ffff00;
+        }
+
+        .hacker-quote {
+            font-size: 18px;
+            color: #d1d5db;
+            line-height: 1.6;
+            margin: 10px auto;
+            max-width: 800px;
+        }
+
+        .hacker-quote span.highlight {
+            color: var(--neon-green);
+            font-weight: bold;
+            background: rgba(0, 255, 102, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* INTERACTIVE BUTTONS BAR */
+        .interactive-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0 10px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        .crazy-btn {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            padding: 14px 20px;
+            border: 3px solid #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.1s, box-shadow 0.1s;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .crazy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-green {
+            background: #00aa44;
+            color: #fff;
+            box-shadow: 0 5px 0 #005522, 0 0 15px rgba(0, 255, 102, 0.6);
+        }
+        .btn-green:hover {
+            background: #00ff66;
+            color: #000;
+            box-shadow: 0 5px 0 #00aa44, 0 0 25px rgba(0, 255, 102, 1);
+        }
+
+        .btn-pink {
+            background: #d6006c;
+            color: #fff;
+            box-shadow: 0 5px 0 #850043, 0 0 15px rgba(255, 0, 128, 0.6);
+        }
+        .btn-pink:hover {
+            background: #ff007f;
+            color: #fff;
+            box-shadow: 0 5px 0 #d6006c, 0 0 25px rgba(255, 0, 128, 1);
+        }
+
+        .btn-blue {
+            background: #0088cc;
+            color: #fff;
+            box-shadow: 0 5px 0 #004466, 0 0 15px rgba(0, 240, 255, 0.6);
+        }
+        .btn-blue:hover {
+            background: #00f0ff;
+            color: #000;
+            box-shadow: 0 5px 0 #0088cc, 0 0 25px rgba(0, 240, 255, 1);
+        }
+
+        /* THE RUNAWAY BUTTON */
+        #runaway-btn {
+            position: relative;
+            background: #ffaa00;
+            color: #000;
+            box-shadow: 0 5px 0 #b37400, 0 0 15px rgba(255, 170, 0, 0.8);
+            z-index: 100;
+            transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        /* TERMINAL LOG WINDOW */
+        .terminal-window {
+            background: #05050d;
+            border: 2px solid var(--neon-green);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+            margin-bottom: 30px;
+            overflow: hidden;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .terminal-header {
+            background: #111b15;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #1a3a25;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-title {
+            color: var(--neon-green);
+            font-size: 13px;
+        }
+
+        .terminal-body {
+            padding: 16px;
+            color: var(--neon-green);
+            font-size: 14px;
+            line-height: 1.6;
+            max-height: 170px;
+            overflow-y: auto;
+        }
+
+        .terminal-body p {
+            margin-bottom: 4px;
+        }
+        .terminal-body .cmd-warn { color: var(--neon-yellow); }
+        .terminal-body .cmd-err { color: #ff4444; }
+        .terminal-body .cmd-ok { color: #00f0ff; }
+
+        /* GOULASH RECIPE SECTION */
+        .recipe-card {
+            background: rgba(18, 12, 38, 0.95);
+            border: 4px solid var(--neon-cyan);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.35);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .recipe-header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px dashed rgba(0, 240, 255, 0.4);
+            padding-bottom: 20px;
+        }
+
+        .recipe-tag {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            background: var(--neon-pink);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .recipe-title {
+            font-family: 'VT323', monospace;
+            font-size: 42px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+            letter-spacing: 2px;
+        }
+
+        .recipe-subtitle {
+            color: #a0aec0;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        /* SPECS GRID */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .spec-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid var(--neon-yellow);
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .spec-value {
+            font-size: 16px;
+            color: var(--neon-yellow);
+            font-weight: bold;
+        }
+
+        /* INGREDIENTS TABLE */
+        .ingredients-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 15px;
+            color: var(--neon-green);
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ingredients-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ingredients-table th, .ingredients-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ingredients-table th {
+            background: rgba(0, 240, 255, 0.15);
+            color: var(--neon-cyan);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .ingredients-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .badge-type {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .badge-meat { background: #991b1b; color: #fecaca; }
+        .badge-veg { background: #065f46; color: #a7f3d0; }
+        .badge-liquid { background: #854d0e; color: #fef08a; }
+        .badge-spice { background: #831843; color: #fbcfe8; }
+        .badge-side { background: #1e3a8a; color: #bfdbfe; }
+
+        /* ALGORITHM STEPS */
+        .steps-container {
+            margin-top: 20px;
+        }
+
+        .step-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 255, 102, 0.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 15px;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .step-block:hover {
+            transform: translateX(6px);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+        }
+
+        .step-num {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            color: var(--neon-green);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-desc {
+            font-size: 15px;
+            color: #e2e8f0;
+            line-height: 1.5;
+        }
+
+        .step-code {
+            background: #000;
+            color: #00ff66;
+            font-family: 'Courier New', monospace;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+            font-size: 13px;
+            display: block;
+            border-left: 3px solid var(--neon-green);
+            overflow-x: auto;
+        }
+
+        /* WIN95 MODAL (STÁHNOUT RAM) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .win95-window {
+            width: 90%;
+            max-width: 480px;
+            background: var(--win95-gray);
+            border: 3px outset #ffffff;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.8);
+            color: #000;
+            font-family: 'Tahoma', 'Arial', sans-serif;
+            font-size: 13px;
+        }
+
+        .win95-titlebar {
+            background: linear-gradient(90deg, var(--win95-blue), #1084d0);
+            color: #fff;
+            padding: 4px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .win95-close {
+            background: var(--win95-gray);
+            border: 2px outset #ffffff;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .win95-content {
+            padding: 20px;
+        }
+
+        .progress-outer {
+            width: 100%;
+            height: 24px;
+            background: #fff;
+            border: 2px inset #ffffff;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-inner {
+            width: 0%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                #000080,
+                #000080 12px,
+                #ffffff 12px,
+                #ffffff 14px
+            );
+            transition: width 0.1s linear;
+        }
+
+        /* RETURN TO WEDDING LINK */
+        .footer-action {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff007f, #00f0ff);
+            color: #ffffff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            padding: 18px 30px;
+            text-decoration: none;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255, 0, 128, 0.6);
+            transition: all 0.3s;
+            border: 3px solid #fff;
+            text-transform: uppercase;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.08) rotate(-1deg);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.9);
+            color: #000;
+            background: #ffee00;
+        }
+
+        /* CRAZY PARTY MODE ACTIVE */
+        body.party-mode {
+            animation: raveBg 0.3s infinite alternate !important;
+        }
+
+        @keyframes raveBg {
+            0% { filter: hue-rotate(0deg) saturate(2); }
+            50% { filter: hue-rotate(180deg) saturate(3) invert(0.15); }
+            100% { filter: hue-rotate(360deg) saturate(2.5); }
+        }
+
+        /* SPARKLE BADGE */
+        .spinning-skull {
+            display: inline-block;
+            animation: spinSkull 2s infinite linear;
+        }
+
+        @keyframes spinSkull {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .hero-title { font-size: 20px; }
+            .recipe-title { font-size: 32px; }
+            .crazy-btn { font-size: 10px; padding: 12px 14px; width: 100%; justify-content: center; }
+            .ingredients-table th, .ingredients-table td { padding: 8px 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CRT Scanlines overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Canvas for falling goulash and emojis -->
+    <canvas id="emoji-canvas"></canvas>
+
+    <!-- Retro Marquee Warning -->
+    <div class="retro-ticker">
+        <div class="retro-ticker-inner">
+            🚨 POZOR! DETEKOVÁN ZVĚDAVÝ AJŤÁK NA /admin! 🚨 IP ADRESA 127.0.0.1 ZAZNAMENÁNA 🚨 DJANGO LOGIN PŘESMĚROVÁN NA /dev/null 🚨 HLÁSÍME ŽENICHOVI &amp; NEVĚSTĚ 🚨 SPOUŠTÍM GULÁŠ PROTOKOL 🚨
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- HERO TROLL SECTION -->
+        <div class="hero-banner">
+            <div class="siren-badge">⚠️ ACCESS DENIED // LEVEL 99 TROLL ⚠️</div>
+            
+            <h1 class="hero-title">
+                <span class="spinning-skull">💀</span> DOBRÝ POKUS, MR. HACKER! <span class="spinning-skull">💀</span>
+            </h1>
+
+            <div class="comic-troll">
+                🎉 Čekal jsi Django Admin login, co? `admin:admin123` dneska neklapne! 🎉
+            </div>
+
+            <p class="hacker-quote">
+                Víš moc dobře, jak funguje Django, a hned tě napadlo vyzkoušet adresu <span class="highlight">/admin</span>.<br>
+                Bohužel (nebo bohudík) pro tebe bylo pravé administrátorské rozhraní odkloněno do tajné dimenze.
+            </p>
+
+            <p class="hacker-quote" style="margin-top: 15px; font-size: 20px; color: var(--neon-yellow);">
+                🏆 <strong>Ale protože ses dostal až sem, zasloužíš si odměnu za IT zvědavost:</strong><br>
+                <span style="color: var(--neon-green); font-size: 22px;">Zde máš tajný recept na ten nejvíc ultimátní svatební guláš! 🍲</span>
+            </p>
+
+            <!-- INTERACTIVE BUTTONS BAR -->
+            <div class="interactive-bar" id="button-container">
+                <!-- Runaway Button -->
+                <button id="runaway-btn" class="crazy-btn">
+                    🔑 ZÍSKAT ADMIN HESLO
+                </button>
+
+                <!-- RAM Download Button -->
+                <button class="crazy-btn btn-blue" onclick="openRamModal()">
+                    💾 STÁHNOUT 128 GB RAM
+                </button>
+
+                <!-- Sound Alarm Button -->
+                <button class="crazy-btn btn-pink" onclick="triggerAlarmSound()">
+                    🚨 SPUSTIT POPLACH
+                </button>
+
+                <!-- Party Mode Button -->
+                <button class="crazy-btn btn-green" onclick="togglePartyMode()">
+                    🪩 CRAZY PARTY MÓD
+                </button>
+            </div>
+        </div>
+
+        <!-- FAKE TERMINAL LOG -->
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="terminal-title">bash - wedding_security_daemon.sh</div>
+                <div style="font-size: 11px; color: #666;">v2.4.0</div>
+            </div>
+            <div class="terminal-body" id="term-logs">
+                <p><span class="cmd-ok">[SEC_MONITOR]</span> Initializing Intrusion Detection System...</p>
+                <p><span class="cmd-warn">[ALERT]</span> Incoming GET request on endpoint: <strong>/admin</strong></p>
+                <p><span class="cmd-warn">[QUERY]</span> User-Agent: Suspiciously Curious Wedding Guest (IT Specialist detected)</p>
+                <p><span class="cmd-err">[FIREWALL]</span> Blocked attempt to brute force admin login credentials!</p>
+                <p><span class="cmd-ok">[ACTION]</span> Diverting hacker to: <strong>goulash_algorithm.py</strong></p>
+                <p><span class="cmd-ok">[PAYLOAD]</span> Status 200 OK - Loading 100% Goulash, 0% Vulnerability.</p>
+            </div>
+        </div>
+
+        <!-- THE GOULASH RECIPE -->
+        <div class="recipe-card">
+            <div class="recipe-header">
+                <div class="recipe-tag">RFC-2026 // DOKUMENTACE PRO VÝVOJÁŘE</div>
+                <h2 class="recipe-title">🍲 SVATEBNÍ HOVĚZÍ GULÁŠ (v2.4 LTS) 🍲</h2>
+                <p class="recipe-subtitle">Optimalizovaný algoritmus s minimální latencí a maximálním chuťovým výkonem</p>
+            </div>
+
+            <!-- SPECS GRID -->
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-label">Čas kompilace (Vaření)</div>
+                    <div class="spec-value">~ 150 minut</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-label">Výpočetní náročnost</div>
+                    <div class="spec-value">Medium (Míchat!)</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-label">Počet porcí (Threads)</div>
+                    <div class="spec-value">6 - 8 hladových ajťáků</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-label">Doporučený Runtime</div>
+                    <div class="spec-value">Druhý den (lepší chuť)</div>
+                </div>
+            </div>
+
+            <!-- DEPENDENCIES / INGREDIENTS -->
+            <div class="ingredients-title">
+                📦 DEPENDENCIES &amp; REQUIREMENTS (Ingredience)
+            </div>
+
+            <table class="ingredients-table">
+                <thead>
+                    <tr>
+                        <th>Komponenta</th>
+                        <th>Alokovaná kapacita</th>
+                        <th>Kategorie</th>
+                        <th>Poznámka pro vývojáře</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hovězí kližka</strong></td>
+                        <td>1 000 g</td>
+                        <td><span class="badge-type badge-meat">Core Binary</span></td>
+                        <td>Žádné ořezávání kližkového klihu! Dělá tu pravou šťávu.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cibule žlutá</strong></td>
+                        <td>1 000 g</td>
+                        <td><span class="badge-type badge-veg">Architecture</span></td>
+                        <td>Zlaté pravidlo 1:1. Hmotnost cibule = hmotnost masa!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepřové sádlo</strong></td>
+                        <td>3 - 4 lžíce</td>
+                        <td><span class="badge-type badge-meat">Accelerator</span></td>
+                        <td>Olej je pro amatéry, sádlo je bare-metal výkon.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sladká mletá paprika</strong></td>
+                        <td>3 polévkové lžíce</td>
+                        <td><span class="badge-type badge-spice">Color Engine</span></td>
+                        <td>Kvalitní maďarská. Pozor na spálení (Critical Exception).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pivo (Ležák 11° nebo 12°)</strong></td>
+                        <td>500 ml do hrnce + 3 l pro kuchaře</td>
+                        <td><span class="badge-type badge-liquid">Buffer Overflow</span></td>
+                        <td>Kyselinka z piva dodá správný říz.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hovězí vývar / Voda</strong></td>
+                        <td>cca 750 ml</td>
+                        <td><span class="badge-type badge-liquid">Memory Stack</span></td>
+                        <td>Podlévat postupně, netopit maso jak v bazénu.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Česnek</strong></td>
+                        <td>5 stroužků</td>
+                        <td><span class="badge-type badge-veg">Firewall</span></td>
+                        <td>Antivirus proti upírům, virům a špatným commitům.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Majoránka &amp; Drcený kmín</strong></td>
+                        <td>Poctivá hrst</td>
+                        <td><span class="badge-type badge-spice">Telemetry</span></td>
+                        <td>Majoránku rozemnout v dlaních až na samém konci!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Houskový knedlík</strong></td>
+                        <td>6 - 8 plátků / host</td>
+                        <td><span class="badge-type badge-side">Frontend GUI</span></td>
+                        <td>Absorpční rozhraní pro přenos omáčky do úst.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- EXECUTION PIPELINE / STEPS -->
+            <div class="ingredients-title" style="color: var(--neon-cyan);">
+                ⚙️ EXECUTION PIPELINE (Algoritmus přípravy)
+            </div>
+
+            <div class="steps-container">
+                
+                <div class="step-block">
+                    <div class="step-num">STEP 01 // KERNEL INITIALIZATION (Cibulový základ)</div>
+                    <div class="step-desc">
+                        V masivním litinovém hrnci rozpusť sádlo a nasyp veškerou nadrobno nakrájenou cibuli.
+                        Restuj pomalu na středním plameni. Cílem je tmavě jantarová barva.
+                    </div>
+                    <span class="step-code">const cibulovyZaklad = await onion.fryUntil({ color: "#5c3317", burnRisk: 0.0 });</span>
+                </div>
+
+                <div class="step-block">
+                    <div class="step-num">STEP 02 // ALLOCATE MEAT CHUNKS (Zatažení masa)</div>
+                    <div class="step-desc">
+                        Přidej hovězí kližku nakrájenou na rovnoměrné kostky cca 3x3 cm. Zvyš plamen a za stálého míchání
+                        maso zatáhni ze všech stran, aby nepustilo všechnu šťávu ven. Osol a opepři.
+                    </div>
+                    <span class="step-code">maso.sear({ temperature: "MAX_CPU", salt: true, pepper: true });</span>
+                </div>
+
+                <div class="step-block">
+                    <div class="step-num">STEP 03 // CRITICAL SECTION: PAPRIKA INJECTION (POZOR!)</div>
+                    <div class="step-desc">
+                        Stáhni plamen na minimum, vsyp mletou papriku a kmín. Míchej PŘESNĚ 20 sekund, aby se rozvoněla v tuku,
+                        a OKAMŽITĚ podlej pivem! Pokud ji necháš pražit déle, zhořkne a celý guláš skončí Fatal Crash.
+                    </div>
+                    <span class="step-code">if (paprika.timeInSeconds > 25) throw new FatalBitternessError();</span>
+                </div>
+
+                <div class="step-block">
+                    <div class="step-num">STEP 04 // ASYNC WHILE LOOP (Pomalé dušení)</div>
+                    <div class="step-desc">
+                        Přiklop pokličku, ztlum sporák na minimum a nech tiše probublávat 2 až 2.5 hodiny. 
+                        Každých 20 minut zkontroluj stav, lehce promíchej a dle potřeby dolij trochu piva nebo vývaru.
+                        Cibule se mezitím kompletně rozpadne a vytvoří hustou luxusní omáčku – žádná mouka není potřeba!
+                    </div>
+                    <span class="step-code">while (maso.isTough()) { await simmer({ minutes: 20 }); developer.drinkBeer(); }</span>
+                </div>
+
+                <div class="step-block">
+                    <div class="step-num">STEP 05 // PRODUCTION DEPLOY &amp; FINISHING</div>
+                    <div class="step-desc">
+                        Když se maso rozpadá na jazyku, přidej utřený česnek a v dlaních rozemnutou majoránku.
+                        Nech 5 minut dojít, vypni plotnu. Servíruj s hromadou čerstvé cibule na kolečka, feferonkou a 6 knedlíky!
+                    </div>
+                    <span class="step-code">return Goulash.deploy({ garnish: "fresh_onion", side: "dumplings_x6", beer: "cold" });</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- EMERGENCY EXIT BACK TO WEDDING -->
+        <div class="footer-action">
+            <a href="{% url 'index' %}" class="back-btn">
+                👰 ZPĚT NA SVATBU HLASOVAT PRO ŽENICHA NEBO NEVĚSTU 🤵
+            </a>
+            <p style="margin-top: 15px; color: #888; font-size: 13px;">
+                Tento incident byl zapsán do protokolu veselých historek pro novomanžele. ❤️
+            </p>
+        </div>
+
+    </div>
+
+    <!-- WIN95 MODAL PRO STAŽENÍ RAM -->
+    <div class="modal-overlay" id="ramModal">
+        <div class="win95-window">
+            <div class="win95-titlebar">
+                <span>Download Accelerator 98 - ram_download.exe</span>
+                <span class="win95-close" onclick="closeRamModal()">X</span>
+            </div>
+            <div class="win95-content">
+                <p><strong>Stahování:</strong> 128 GB DDR5 High-Speed Wedding RAM</p>
+                <p id="ram-status" style="margin-top: 8px; color: #444;">Navazuji spojení s cloudem...</p>
+                
+                <div class="progress-outer">
+                    <div class="progress-inner" id="ramProgress"></div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #555;">
+                    <span id="ram-bytes">0 MB z 131 072 MB</span>
+                    <span id="ram-speed">Rychlost: 420 MB/s</span>
+                </div>
+
+                <div style="text-align: right; margin-top: 15px;">
+                    <button id="ramCancelBtn" style="padding: 5px 15px; background: var(--win95-gray); border: 2px outset #fff; cursor: pointer;" onclick="closeRamModal()">
+                        Storno
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. RUNAWAY ADMIN BUTTON (TELEPORT ON HOVER)
+        const runawayBtn = document.getElementById('runaway-btn');
+        const funnyTexts = [
+            "TĚSNĚ VEDLE! 😜",
+            "MOC POMALÝ! ⚡",
+            "ANI NÁHODOU! 🛑",
+            "404: ADMIN NOT FOUND",
+            "RADŠI SI DEJ PIVO! 🍺",
+            "HLEDEJ DÁLE! 🕵️",
+            "CHYŤ MĚ KDYŽ TO DOKÁŽEŠ!",
+            "GULÁŠ JE LEPŠÍ! 🍲"
+        ];
+
+        function teleportButton() {
+            const pad = 120;
+            const maxX = window.innerWidth - runawayBtn.offsetWidth - pad;
+            const maxY = window.innerHeight - runawayBtn.offsetHeight - pad;
+            
+            const randomX = Math.max(pad / 2, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(pad / 2, Math.floor(Math.random() * maxY));
+
+            runawayBtn.style.position = 'fixed';
+            runawayBtn.style.left = randomX + 'px';
+            runawayBtn.style.top = randomY + 'px';
+
+            const randText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+            runawayBtn.innerText = randText;
+
+            // Play quick boing sound
+            playBeep(450, 0.08);
+        }
+
+        runawayBtn.addEventListener('mouseenter', teleportButton);
+        runawayBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            teleportButton();
+        });
+
+        // 2. WEB AUDIO API SYNTHESIZER (NO EXTERNAL FILES NEEDED)
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playBeep(freq, duration) {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            } catch (err) {
+                // AudioContext blocked until interaction
+            }
+        }
+
+        function triggerAlarmSound() {
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+                
+                for (let i = 0; i < 6; i++) {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sawtooth';
+                    
+                    const startTime = now + (i * 0.25);
+                    osc.frequency.setValueAtTime(600, startTime);
+                    osc.frequency.linearRampToValueAtTime(1100, startTime + 0.12);
+                    osc.frequency.linearRampToValueAtTime(600, startTime + 0.24);
+
+                    gain.gain.setValueAtTime(0.15, startTime);
+                    gain.gain.linearRampToValueAtTime(0.01, startTime + 0.24);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(startTime);
+                    osc.stop(startTime + 0.25);
+                }
+                
+                alert("🚨 ALARM! 🚨\nSvatební poplach spuštěn!\nŽenich, nevěsta a všichni svatebčané byli informováni o tvé neukojitelné touze hackovat!");
+            } catch (e) {
+                alert("🚨 POPLACH! Ženich byl informován!");
+            }
+        }
+
+        // 3. CRAZY PARTY STROBOSCOPE MODE
+        let partyActive = false;
+        function togglePartyMode() {
+            partyActive = !partyActive;
+            document.body.classList.toggle('party-mode', partyActive);
+            if (partyActive) {
+                playBeep(880, 0.2);
+            }
+        }
+
+        // 4. WIN95 128 GB RAM DOWNLOAD SIMULATOR
+        let ramInterval = null;
+        function openRamModal() {
+            const modal = document.getElementById('ramModal');
+            const progress = document.getElementById('ramProgress');
+            const status = document.getElementById('ram-status');
+            const bytes = document.getElementById('ram-bytes');
+            
+            modal.style.display = 'flex';
+            progress.style.width = '0%';
+            
+            let val = 0;
+            const messages = [
+                "Navazuji kontakt se svatebním satelitem...",
+                "Čištění staré RAMky...",
+                "Stahování čipů DDR5 z internetu...",
+                "Instalace RGB osvětlení do základní desky...",
+                "Optimalizace gulášového subsystému...",
+                "Dokončování instalace..."
+            ];
+
+            clearInterval(ramInterval);
+            ramInterval = setInterval(() => {
+                val += Math.floor(Math.random() * 8) + 2;
+                if (val > 100) val = 100;
+                
+                progress.style.width = val + '%';
+                const mb = Math.floor((val / 100) * 131072);
+                bytes.innerText = `${mb.toLocaleString()} MB z 131 072 MB`;
+                
+                const msgIdx = Math.min(Math.floor((val / 100) * messages.length), messages.length - 1);
+                status.innerText = messages[msgIdx];
+
+                if (val >= 100) {
+                    clearInterval(ramInterval);
+                    status.innerText = "✅ Hotovo! Počítač nyní běží o 420 % rychleji!";
+                    playBeep(980, 0.3);
+                }
+            }, 80);
+        }
+
+        function closeRamModal() {
+            clearInterval(ramInterval);
+            document.getElementById('ramModal').style.display = 'none';
+        }
+
+        // 5. FALLING EMOJIS & GOULASH CANVAS
+        const canvas = document.getElementById('emoji-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const emojis = ['🍲', '🥩', '🧅', '🍺', '💻', '🥖', '⚡', '💀', '🔥', '✨', '💍'];
+        const particles = [];
+        const particleCount = 35;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                speedY: Math.random() * 2 + 1,
+                speedX: (Math.random() - 0.5) * 1.5,
+                char: emojis[Math.floor(Math.random() * emojis.length)],
+                size: Math.floor(Math.random() * 18) + 18,
+                rot: Math.random() * 360,
+                rotSpeed: (Math.random() - 0.5) * 2
+            });
+        }
+
+        function renderEmojis() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let p of particles) {
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rot * Math.PI) / 180);
+                ctx.font = `${p.size}px serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(p.char, 0, 0);
+                ctx.restore();
+
+                p.y += p.speedY;
+                p.x += p.speedX;
+                p.rot += p.rotSpeed;
+
+                if (p.y > height + 40) {
+                    p.y = -40;
+                    p.x = Math.random() * width;
+                }
+                if (p.x < -40) p.x = width + 40;
+                if (p.x > width + 40) p.x = -40;
+            }
+
+            requestAnimationFrame(renderEmojis);
+        }
+        renderEmojis();
+
+        // 6. LIVE CONSOLE LOG SIMULATION
+        const terminal = document.getElementById('term-logs');
+        const hackerMsgs = [
+            "[INFO] Checking firewall port 1337...",
+            "[WARN] CPU temperature elevated due to onion frying.",
+            "[INFO] Beer level: 82% remaining.",
+            "[SCAN] No vulnerabilities found in Dumpling Layer.",
+            "[INFO] Synchronizing with Wedding Database...",
+            "[SUCCESS] Packet delivered: +1XP to Hacker Curiosity."
+        ];
+        
+        let msgIndex = 0;
+        setInterval(() => {
+            if (msgIndex < hackerMsgs.length) {
+                const p = document.createElement('p');
+                p.innerHTML = `<span class="cmd-ok">${hackerMsgs[msgIndex]}</span>`;
+                terminal.appendChild(p);
+                terminal.scrollTop = terminal.scrollHeight;
+                msgIndex++;
+            }
+        }, 3500);
+    </script>
+</body>
+</html>

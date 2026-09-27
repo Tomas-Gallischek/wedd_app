@@ -41,3 +41,7 @@ def ona_view(request):
     xp.objects.first().save()
      
     return render(request, 'main_app/ona.html')
+
+
+def admin_view(request):
+    return render(request, 'main_app/admin.html') 
